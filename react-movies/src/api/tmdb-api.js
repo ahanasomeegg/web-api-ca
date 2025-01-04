@@ -1,6 +1,6 @@
 export const getMovies = () => {
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+    `${process.env.REACT_APP_API_BASE_URL}/movies`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -86,7 +86,7 @@ export const getMovie = (args) => {
 
   export const getUpcomingMovies = () => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+     `${process.env.REACT_APP_API_BASE_URL}/movies/tmdb/upcoming`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
