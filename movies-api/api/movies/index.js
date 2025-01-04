@@ -1,7 +1,7 @@
 import movieModel from './movieModel';
 import asyncHandler from 'express-async-handler';
 import express from 'express';
-import {getUpcomingMovies, getMovieGenres} from '../tmdb-api';
+import {getUpcomingMovies, getMovieGenres, getPopularMovies} from '../tmdb-api';
   
 
 const router = express.Router();
@@ -52,5 +52,28 @@ router.get('/tmdb/genres', asyncHandler(async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }));
+
+router.get('/tmdb/popular', asyncHandler(async (req, res) => {
+    try {
+        const movies = await getPopularMovies();
+        res.status(200).json(movies);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}));
+
+router.get('/mongo/:id', asyncHandler(async (req, res) => {
+    try {
+        const movie = await movieModel.findById(req.params.id);
+        if (movie) {
+            res.status(200).json(movie);
+        } else {
+            res.status(404).json({ message: 'Movie not found.' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}));
+
 
 export default router;
