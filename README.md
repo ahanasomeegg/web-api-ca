@@ -6,39 +6,43 @@ Name: Duan Li
 
 A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** (or modifications to existing features)
  
- +  
- + Feature 2 
- + Feature 3 
- + etc
+ + nowPlaying movies 
+ + toprated movies 
+ + login and register in the front end
+ + Front and back end integration
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+npm install axios in react-movies folder 
 
 ## API Configuration
 
-Describe any configuration that needs to take place before running the API. For example, creating an `.env` file and what variables to put in it. Give an example of how this might be done.
-
-REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB, just placeholders as indicated below:
-
 ______________________
-NODEENV=development
+//back end
+NODE_ENV=development
 PORT=8080
-HOST=
-mongoDB=YourMongoURL
-seedDb=true
-secret=YourJWTSecret
+HOST=localhost
+MONGO_DB=mongodb+srv://......
+retryWrites=true&w=majority&appName=tasky
+TMDB_KEY=...
+SECRET=...
 ______________________
 
+//front end
+REACT_APP_TMDB_KEY=myKey
+FAST_REFRESH=false
+REACT_APP_API_BASE_URL=http://localhost:8080/api
 ## API Design
-Give an overview of your web API design, perhaps similar to the following: 
+
 
 - /api/movies | GET | Gets a list of movies 
 - /api/movies/{movieid} | GET | Gets a single movie 
 - /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
 - /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
-
-If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
+- /api/movies/tmdb/upcoming | GET | get upcoming movies
+- /api/movies/tmdb/topRated | GET | get topRated movies
+- /api/movies/tmdb/nowPlaying | GET | get nowPlaying movies
+- /api/movies/mongo/:id   GET | get id from mongo
 
 ## Security and Authentication
 
@@ -46,7 +50,18 @@ Give details of authentication/security implemented on the API (e.g. passport/se
 
 ## Integrating with React App
 
-Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. Describe any other updates to the React app from Assignment One.
+Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. 
+1.homepage    
+${process.env.REACT_APP_API_BASE_URL}/movies
+
+2.upcoming    
+${process.env.REACT_APP_API_BASE_URL}/movies/tmdb/upcoming
+
+3.nowplaying
+${process.env.REACT_APP_API_BASE_URL}/movies/tmdb/nowPlaying
+
+4.toprated
+${process.env.REACT_APP_API_BASE_URL}/movies/tmdb/topRated
 
 ## Independent learning (if relevant)
 
