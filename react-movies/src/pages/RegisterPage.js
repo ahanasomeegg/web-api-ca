@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import "../css/RegisterPage.css"; // 引入样式
+import "../css/RegisterPage.css"; 
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ const RegisterPage = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:8080/users?action=register", {
+      await axios.post("http://localhost:8080/api/users?action=register", {
         username,
         password,
       });

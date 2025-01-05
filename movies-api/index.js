@@ -7,6 +7,7 @@ import defaultErrHandler from './errHandler'
 import moviesRouter from './api/movies';
 import reviewsRouter from './api/reviews/index.js';
 
+
 dotenv.config();
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/users', usersRouter);
 app.use('/api/movies', moviesRouter);
-app.use('/api/reviews', reviewsRouter);
+app.use('/api/reviews',  reviewsRouter);
 app.use(defaultErrHandler);
 
 app.listen(port, () => {
