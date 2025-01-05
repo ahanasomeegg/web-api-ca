@@ -17,6 +17,8 @@ import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
 import RecommendationList from "./components/movieRecommendations";
 import ActorProfilePage from "./pages/ActorProfilePage";
 import CreditsList from "./components/movieCredits";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +31,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -43,11 +46,13 @@ const App = () => {
             <Route path="movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="movies/mustWatch" element={<MustWatchPage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="*" element={ <Navigate to="/" /> } />
+            <Route path="*" element={ <Navigate to="/login" /> } />
             <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
             <Route path="/movies/:id/recommendations" element={ <RecommendationList /> } />
             <Route path="actor/:id" element={<ActorProfilePage />} />
             <Route path="/movies/:id/credits" element={ <CreditsList /> } />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
            
           </Routes>
         </MoviesContextProvider>

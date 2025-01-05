@@ -101,7 +101,7 @@ export const getMovie = (args) => {
 
   export const getTopRatedMovies = () => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `${process.env.REACT_APP_API_BASE_URL}/movies/tmdb/topRated`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -116,7 +116,7 @@ export const getMovie = (args) => {
  
   export const getNowPlayingMovies = () => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `${process.env.REACT_APP_API_BASE_URL}/movies/tmdb/nowPlaying`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
